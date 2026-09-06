@@ -3,11 +3,11 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-  const Base_Api = "https://jsonplaceholder.typicode.com/users/1"
+  const Base_Api = "https://jsonplaceholder.typicode.com/users/8"
 
   const getAllUsers = async () => {
     try {
-      const result = await axios.get(Base_Api)
+      const result = await axios.get(Base_Api, newUser)
       console.log(result.data);
 
 
@@ -39,7 +39,7 @@ function App() {
   const putUser = async () => {
     try {
       const newObj = {
-        "id": 1,
+        "id": 8,
         "name": "Leanne Graham",
         "username": "Bret",
         "email": "Sincere@april.biz",
@@ -107,11 +107,28 @@ function App() {
     }
   }
 
+
+  const patchUser = async () => {
+    try {
+      const newObj = {
+        "id": 10
+      }
+      const result = await axios.patch(Base_Api, newObj)
+      console.log(result.data);
+
+
+    } catch (error) {
+      console.log(`something went wrong ${error}`);
+
+    }
+  }
+
   useEffect(() => {
     // getAllUsers()
     // postUser()
     // putUser()
-    deleteUser()
+    // deleteUser()
+    patchUser()
   }, [])
   return (
     <div>
